@@ -17,7 +17,9 @@ var distance = 10.0;
 var height = 5.0;
 // How much we 
 var heightDamping = 2.0;
+var sideDamping = 2.0;
 var rotationDamping = 3.0;
+
 
 // Place the script in the Camera-Control group in the component menu
 @script AddComponentMenu("Camera-Control/Smooth Follow")
@@ -31,15 +33,19 @@ function LateUpdate () {
 	// Calculate the current rotation angles
 	wantedRotationAngle = target.eulerAngles.y;
 	wantedHeight = target.position.y + height;
+	wantedSide = target.position.x;
 		
 	currentRotationAngle = transform.eulerAngles.y;
 	currentHeight = transform.position.y;
+	currentSide = transform.position.x;
 	
 	// Damp the rotation around the y-axis
 	currentRotationAngle = Mathf.LerpAngle (currentRotationAngle, wantedRotationAngle, rotationDamping * Time.deltaTime);
 
 	// Damp the height
 	currentHeight = Mathf.Lerp (currentHeight, wantedHeight, heightDamping * Time.deltaTime);
+
+	currentSide = Mathf.Lerp(currentSide, wantedSide, sideDamping * Time.deltaTime);
 
 	// Convert the angle into a rotation
 	currentRotation = Quaternion.Euler (0, currentRotationAngle, 0);
@@ -51,6 +57,7 @@ function LateUpdate () {
 
 	// Set the height of the camera
 	transform.position.y = currentHeight;
+	transform.position.x = currentSide;
 	
 	// Always look at the target
 	transform.LookAt (target);
