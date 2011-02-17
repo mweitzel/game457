@@ -247,6 +247,7 @@ function UpdateEffects () {
 }
 
 function Update () {
+
 	if (Input.GetButtonDown ("Jump") && canControl) {
 		jump.lastButtonTime = Time.time;
 	}
