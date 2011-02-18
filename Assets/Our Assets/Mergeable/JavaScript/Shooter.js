@@ -10,11 +10,11 @@ function Update () {
 function shoot(){
 	// Instantiate the projectile at the position and rotation of this transform
 	var clone : Rigidbody;
-	var lastDirectionVector = GetComponent(LastDirection).vector;
+	var shootDirection = GetComponent(DirectionToShoot).vector;
 //	Physics.IgnoreCollision(clone.collider, GetComponent(CharacterController).collider);
 	clone = Instantiate(projectile, transform.position, transform.rotation);
-	clone.position.x = clone.position.x  + lastDirectionVector.x;
-	clone.velocity = GetComponent(CharacterController).velocity + 10*lastDirectionVector;
+	clone.position += shootDirection;
+	clone.velocity = GetComponent(CharacterController).velocity + 13*shootDirection;
 }
 
 function shouldShoot(){
