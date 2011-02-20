@@ -67,7 +67,7 @@ class PlatformerControllerJumping {
 	var enabled = true;
 
 	// How high do we jump when pressing jump and letting go immediately
-	var height = 1.0;
+	var height = 2.0;
 	// We add extraHeight units (meters) on top when holding the button down longer while jumping
 	var extraHeight = 4.1;
 	

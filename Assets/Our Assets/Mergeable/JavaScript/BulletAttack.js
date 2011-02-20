@@ -1,13 +1,18 @@
-var projectile : Rigidbody;
+var damageRules : DamageApplier;
 function Update () {
 }
 
 function OnCollisionEnter(collision : Collision) {
 	
-	//Destroy(collision.collider.gameObject, 1); 
+	attacker = this.gameObject.GetComponent("Stats");
+	defender = collision.collider.gameObject;
+	if(isAnObjectWithStats(defender))
+		damageRules.applyAttack(attacker, isAnObjectWithStats(defender));
+	
 	Destroy(gameObject);
 	
-	GameObject.Find("DamageApplier").GetComponent("DamageApplier").applyAttack(collision.collider.gameObject);
-	
-	
+}
+
+function isAnObjectWithStats(thingToCheck){
+	return thingToCheck.GetComponent("Stats");	
 }
