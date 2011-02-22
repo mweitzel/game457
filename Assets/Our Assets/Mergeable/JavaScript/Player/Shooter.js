@@ -4,7 +4,7 @@ function Update () {
 	// Ctrl was pressed, launch a projectile
 	if (shouldShoot()) {
 		//shoot();
-		mouseShoot();
+		shoot();
 	}
 }
 
@@ -14,16 +14,18 @@ function shoot(){
 	var shootDirection = GetComponent(DirectionToShoot).vector;
 
 	clone = Instantiate(projectile, transform.position, transform.rotation);
-	clone.transform.position += 2*shootDirection;
+//	clone.transform.position += 2*shootDirection;
 	clone.rigidbody.velocity = GetComponent(CharacterController).velocity + 13*shootDirection;
+	
+	Physics.IgnoreCollision(collider, clone.collider);
 }
 
 function shouldShoot() {
-	return Input.GetKeyDown(KeyCode.Mouse0);
+//	return Input.GetKeyDown(KeyCode.Mouse0);
 
-//	return Input.GetButtonDown("Fire1");
+	return Input.GetButtonDown("Fire1");
 }
-
+/*
 function mouseShoot(){
 
 	var clone : GameObject;
@@ -47,7 +49,7 @@ function mouseShoot(){
 		clone.rigidbody.velocity = aVector3*13;
 	}
 }
-
+*/
 
 function mouseShoot2() {
 	position = Vector3.up*10;
