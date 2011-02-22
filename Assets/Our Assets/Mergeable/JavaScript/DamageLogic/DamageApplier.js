@@ -4,15 +4,24 @@ function Update () {
 function applyAttack(attacker : Stats, defender : Stats) {
 	
 	damageTotal = baseDamage(attacker, defender) * variance();
-
-	defender.DecreaseHealth(damageTotal);
+	
+	if(!defender.invincible){
+		defender.DecreaseHealth(damageTotal);
+		damageToDisplay = "" + Mathf.Round(damageTotal);
+	}
+	else{
+		damageToDisplay = "Invincible";
+	}
 	
 	if(attacker.gameObject.GetComponent("Rigidbody"))
 		aDirection = attacker.gameObject.rigidbody.velocity;
 	else
 		aDirection = Vector3.zero;
 	
-	gameObject.GetComponent("DamageTextDrawer").drawNewDamage(damageTotal, defender.transform.position, aDirection);
+//	if(defender.invincible)
+		
+	
+	gameObject.GetComponent("DamageTextDrawer").drawNewDamage(damageToDisplay, defender.transform.position, aDirection);
 }
 
 function baseDamage(attacker : Stats, defender : Stats) {

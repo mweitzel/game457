@@ -18,6 +18,8 @@ function shoot(){
 	clone.rigidbody.velocity = GetComponent(CharacterController).velocity + 13*shootDirection;
 	
 	Physics.IgnoreCollision(collider, clone.collider);
+	
+	Destroy(clone, 1.2);
 }
 
 function shouldShoot() {

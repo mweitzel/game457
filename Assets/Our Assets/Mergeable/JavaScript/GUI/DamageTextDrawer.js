@@ -6,11 +6,11 @@ function Start() {
 function Update () {
 }
 
-function drawNewDamage(numberToDisplay : int, whereToPut : Vector3, howFast : Vector3){
+function drawNewDamage(numberToDisplay : String, whereToPut : Vector3, howFast : Vector3){
 	damageTextClone = Instantiate (damageText, whereToPut, Quaternion.identity);
 	damageTextClone.gameObject.rigidbody.velocity = howFast;
 	damageTextClone.gameObject.rigidbody.velocity += varianceVector();
-	damageTextClone.gameObject.GetComponent("TextMesh").text = "" + numberToDisplay;
+	damageTextClone.gameObject.GetComponent("TextMesh").text = numberToDisplay;
 //	damageTextClone.gameObject.GetComponent("TextMesh").font.material.color = Color.red;
 //	damageTextClone.gameObject.GetComponent("TextMesh").font.material.color.a = .85;
 	
