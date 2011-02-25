@@ -1,3 +1,12 @@
+/// <summary>
+/// Fade.js
+/// Feb 22, 2011
+/// Matthew Weitzel
+/// fades ...
+/// variables:
+///	EaseType
+///	use: fade
+/// </summary>
 enum EaseType {None, In, Out, InOut}
 
 static var use : Fade;

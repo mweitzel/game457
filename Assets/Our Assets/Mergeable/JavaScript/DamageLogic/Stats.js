@@ -1,12 +1,24 @@
+/// <summary>
+/// Stats.js
+/// Feb 22, 2011
+/// Matthew Weitzel
+/// 
+/// Stores information about the entity.
+/// 
+/// </summary>
 var attack = 1;
 var defense = 1;
 var health = 1;
 var invincible  = false;
-
-	
+var isPlayer = false;
 function Update () {
 	if(shouldDie())
 		Destroy(gameObject);
+	if(isPlayer == true) {
+		var hpBar : PlayerHealth;
+		hpBar = this.gameObject.GetComponent("PlayerHealth");
+		hpBar. SetCurrentHealth(health);
+	}
 }
 
 function shouldDie() {

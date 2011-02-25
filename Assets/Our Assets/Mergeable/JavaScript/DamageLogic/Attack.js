@@ -1,3 +1,13 @@
+/// <summary>
+/// attack.js
+/// Feb 22, 2011
+/// Matthew Weitzel
+/// Projectile attack script
+/// variables:
+///	damageRules
+///	destroySelfOnHit
+/// </summary>
+
 var damageRules : DamageApplier;
 var destroySelfOnHit = true;
 

@@ -1,9 +1,17 @@
+/// <summary>
+/// DamageApplier.js
+/// Feb 22, 2011
+/// Matthew Weitzel
+/// Only one per level adjust all damage,
+/// variables:
+///	none
+/// </summary>
 function Update () {
 }
 
 function applyAttack(attacker : Stats, defender : Stats) {
-	
-	damageTotal = baseDamage(attacker, defender) * variance();
+	//damageTotal = baseDamage(attacker, defender) * variance();
+	var damageTotal = baseDamage(attacker, defender) * variance();
 	
 	if(!defender.invincible){
 		defender.DecreaseHealth(damageTotal);
@@ -19,9 +27,10 @@ function applyAttack(attacker : Stats, defender : Stats) {
 		aDirection = Vector3.zero;
 	
 //	if(defender.invincible)
-		
 	
 	gameObject.GetComponent("DamageTextDrawer").drawNewDamage(damageToDisplay, defender.transform.position, aDirection);
+	// Added calvin
+	//return damageTotal;
 }
 
 function baseDamage(attacker : Stats, defender : Stats) {

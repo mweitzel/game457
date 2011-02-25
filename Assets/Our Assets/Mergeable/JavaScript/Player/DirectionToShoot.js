@@ -1,3 +1,13 @@
+/// <summary>
+/// DirectionToShoot.js
+/// Feb 22, 2011
+/// Matthew Weitzel
+/// Selects a direction to fire.
+/// variables:
+///	private var rightOrLeft = Vector3.right;
+///	private var upOrDown = Vector3.up;
+///	public var vector;
+/// </summary>
 private var rightOrLeft = Vector3.right;
 private var upOrDown = Vector3.up;
 public var vector;

@@ -1,3 +1,11 @@
+/// <summary>
+/// DamageTextDrawer.js
+/// Feb 22, 2011
+/// Matthew Weitzel
+/// Displays damage text
+/// variables:
+///	damageText
+/// </summary>
 var damageText : GameObject;
 
 function Start() {

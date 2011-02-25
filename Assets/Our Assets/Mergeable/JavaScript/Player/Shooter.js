@@ -1,3 +1,11 @@
+/// <summary>
+/// Shooter.js
+/// Feb 22, 2011
+/// Matthew Weitzel
+/// On mouse click attacks,
+/// variables:
+///	none
+/// </summary>
 var projectile : GameObject;
 
 function Update () {
