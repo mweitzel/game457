@@ -20,6 +20,7 @@ function shoot(){
 
 	var clone : GameObject;
 	var shootDirection = GetComponent(DirectionToShoot).vector;
+	
 
 	clone = Instantiate(projectile, transform.position, transform.rotation);
 //	clone.transform.position += 2*shootDirection;

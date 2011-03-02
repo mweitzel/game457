@@ -98,8 +98,35 @@ class PlatformerControllerJumping {
 	@System.NonSerialized
 	var lastStartHeight = 0.0;
 }
+// Calvin 345
+// We will contain all the stance related variables in one helper class for clarity.
+class PlatformerControllerStance {
+	// Can the character change Stance?
+	var enabled = true;
+	
+	// This prevents inordinarily too quick jumping
+	// The next line, @System.NonSerialized , tells Unity to not serialize the variable or show it in the inspector view.  Very handy for organization!
+	@System.NonSerialized
+	var repeatTime = 0.01;
 
+	@System.NonSerialized
+	var timeout = 0.05;
+
+	// Last time the stance button was clicked down
+	@System.NonSerialized
+	var lastButtonTime = -10.0;
+	
+	// Last time we performed a stance change
+	@System.NonSerialized
+	var lastTime = -1.0;
+	
+	// Current Stance
+	@System.NonSerialized
+	var currentStance = 0;
+}
 var jump : PlatformerControllerJumping;
+// Calvin 345
+var stance : PlatformerControllerStance;
 
 private var controller : CharacterController;
 
@@ -191,6 +218,52 @@ function ApplyJumping () {
 		}
 	}
 }
+// Stance change
+function ApplyStanceChange(){
+		if (stance.lastTime + stance.repeatTime > Time.time)
+			return;
+		// Stance
+		// - Only when pressing the button down
+		// - With a timeout 
+		
+		//if (stance.enabled && Time.time < stance.lastButtonTime + stance.timeout) {
+			// CHANGE ME
+			//movement.verticalSpeed = CalculateJumpVerticalSpeed (jump.height);
+			//movement.inAirVelocity = lastPlatformVelocity;
+			//SendMessage ("DidJump", SendMessageOptions.DontRequireReceiver);
+			if (Input.GetButtonDown ("Stance 1") && canControl) {
+				stance.lastButtonTime = Time.time;
+				ApplyStance(0);
+			}
+			if (Input.GetButtonDown ("Stance 2") && canControl) {
+				stance.lastButtonTime = Time.time;
+				ApplyStance(1);
+			}
+			if (Input.GetButtonDown ("Stance 3") && canControl) {
+				stance.lastButtonTime = Time.time;
+				ApplyStance(2);
+			}
+		//}
+}
+// Stance change 
+function ApplyStance(stance : int) {
+	//gameObject.tag = "Player";
+	//gameObject.tag = "Bullet";
+	var stats = GameObject.Find("Bullet").GetComponent(Stats);
+	//stats = Bullet.GetComponent("Stats");
+	switch(stance){
+		case 0:
+			stats.eleType = 0;
+			break;
+		case 1:
+			stats.eleType = 1;
+			break;
+		case 2:
+			stats.eleType = 2;
+			break;
+	}
+}
+
 
 function ApplyGravity () {
 	// Apply gravity
@@ -260,6 +333,9 @@ function Update () {
 
 	// Apply jumping logic
 	ApplyJumping ();
+	
+	// Apply stance change
+	ApplyStanceChange();
 	
 	// Moving platform support
 	if (activePlatform != null) {
@@ -353,6 +429,7 @@ function IsTouchingCeiling () {
 function GetDirection () {
 	return movement.direction;
 }
+// Stances 
 
 function GetHangTime() {
 	return movement.hangTime;
