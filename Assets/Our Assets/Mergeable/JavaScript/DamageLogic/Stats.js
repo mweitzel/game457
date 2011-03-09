@@ -11,7 +11,7 @@ var defense = 1;
 var health = 1;
 var invincible  = false;
 var isPlayer = false;
-var eleType = 0;// 0 = Fire, 1 = Water, 2 = Earth
+var eleType = "WATER";
 
 function Update () {
 	destroyObjectIfPossible();

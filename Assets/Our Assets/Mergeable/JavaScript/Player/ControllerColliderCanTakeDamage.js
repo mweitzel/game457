@@ -6,7 +6,7 @@
 /// variables:
 ///	DamageApplier
 /// </summary>
-var damageApplier : DamageApplier;
+var attackLogic : DamageApplier;
 
 function OnControllerColliderHit (hit : ControllerColliderHit)
 {
@@ -20,7 +20,7 @@ function checkForDamageToYou(otherObject){
 
 	player = gameObject.GetComponent("Stats");
 	if(currentCollisionEntity && player/*us*/) {
-		//damageApplier.applyAttack(them, player/*us*/);
-		damageApplier.applyAttack(currentCollisionEntity, player);
+		//attackLogic.applyAttack(them, player/*us*/);
+		attackLogic.applyAttack(currentCollisionEntity, player);
 		}
 }

@@ -7,9 +7,6 @@
 ///	none
 /// </summary>
 
-var fire = 0;
-var water = 1;
-var earth = 2;
 
 function Update () {
 }
@@ -44,13 +41,13 @@ function applyElementalRelations(attacker : Stats, defender : Stats, damageTotal
 		return damageTotal*elementMultiplier(attacker.eleType, defender.eleType);
 }
 
-function elementMultiplier(attackerType : int, defenderType : int){
+function elementMultiplier(attackerType /*: int*/, defenderType/* : int*/){
 
 	if(attackerType == defenderType)
 		return 1;
-	if((attackerType == fire && defenderType == water)
-	|| (attackerType == water && defenderType == earth)
-	|| (attackerType == earth && defenderType == fire))
+	if((attackerType == "FIRE" && defenderType == "WATER")
+	|| (attackerType == "WATER" && defenderType == "EARTH")
+	|| (attackerType == "EARTH" && defenderType == "FIRE"))
 		return -0.5;
 	else
 		return 2;

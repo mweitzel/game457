@@ -47,10 +47,7 @@ function Start() {
  	}
 	function AddjustCurrentHealth(adj: int) {
   		curHealth += adj;
-  		
-  		if(curHealth < 0)
-  			curHealth += adj;
-  		
+  		  		
   		if(curHealth > maxHealth)
   			curHealth = maxHealth;
   		

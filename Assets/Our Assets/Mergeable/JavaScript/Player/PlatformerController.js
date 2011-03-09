@@ -101,9 +101,7 @@ class PlatformerControllerJumping {
 // Calvin 345
 // We will contain all the stance related variables in one helper class for clarity.
 class PlatformerControllerStance {
-	// Can the character change Stance?
-	var enabled = true;
-	
+	// Can the character change Stance?	
 	// This prevents inordinarily too quick jumping
 	// The next line, @System.NonSerialized , tells Unity to not serialize the variable or show it in the inspector view.  Very handy for organization!
 	@System.NonSerialized
@@ -249,19 +247,21 @@ function ApplyStanceChange(){
 function ApplyStance(stance : int) {
 	//gameObject.tag = "Player";
 	//gameObject.tag = "Bullet";
-	var stats = GameObject.Find("Bullet").GetComponent(Stats);
+	var stats = gameObject.GetComponent(Stats);
 	//stats = Bullet.GetComponent("Stats");
 	switch(stance){
 		case 0:
-			stats.eleType = 0;
+			stats.eleType = "FIRE";
 			break;
 		case 1:
-			stats.eleType = 1;
+			stats.eleType = "WATER";
 			break;
 		case 2:
-			stats.eleType = 2;
+			stats.eleType = "EARTH";
 			break;
 	}
+	
+	gameObject.GetComponent(Shooter).updateProjetile();
 }
 
 

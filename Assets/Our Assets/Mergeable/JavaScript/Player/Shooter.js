@@ -1,29 +1,24 @@
-/// <summary>
-/// Shooter.js
-/// Feb 22, 2011
-/// Matthew Weitzel
-/// On mouse click attacks,
-/// variables:
-///	none
-/// </summary>
-var projectile : GameObject;
+
+var projectiles : GameObject[];
+var projectile;
+
+function Start(){
+	projectile = projectiles[0];	
+}
 
 function Update () {
-	// Ctrl was pressed, launch a projectile
 	if (shouldShoot()) {
-		//shoot();
 		shoot();
 	}
 }
 
-function shoot(){
+function shoot(){	
 
 	var clone : GameObject;
 	var shootDirection = GetComponent(DirectionToShoot).vector;
 	
 
 	clone = Instantiate(projectile, transform.position, transform.rotation);
-//	clone.transform.position += 2*shootDirection;
 	clone.rigidbody.velocity = GetComponent(CharacterController).velocity + 13*shootDirection;
 	
 	Physics.IgnoreCollision(collider, clone.collider);
@@ -32,10 +27,17 @@ function shoot(){
 }
 
 function shouldShoot() {
-//	return Input.GetKeyDown(KeyCode.Mouse0);
-
 	return Input.GetButtonDown("Fire1");
 }
+
+function updateProjetile() {
+	for (var aProjectile in projectiles)
+		if(aProjectile.GetComponent(Stats).eleType == gameObject.GetComponent(Stats).eleType)
+			projectile = aProjectile;
+	
+}
+
+
 /*
 function mouseShoot(){
 
@@ -61,7 +63,7 @@ function mouseShoot(){
 	}
 }
 */
-
+/*
 function mouseShoot2() {
 	position = Vector3.up*10;
 	var clone : GameObject;
@@ -75,3 +77,4 @@ function mouseShoot2() {
 
 
 
+*/
