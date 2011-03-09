@@ -14,8 +14,16 @@ var isPlayer = false;
 var eleType = 0;// 0 = Fire, 1 = Water, 2 = Earth
 
 function Update () {
+	destroyObjectIfPossible();
+	updateHealthBar();
+}
+
+function destroyObjectIfPossible(){
 	if(shouldDie())
 		Destroy(gameObject);
+}
+
+function updateHealthBar(){
 	if(isPlayer == true) {
 		var hpBar : PlayerHealth;
 		hpBar = this.gameObject.GetComponent("PlayerHealth");
