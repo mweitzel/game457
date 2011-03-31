@@ -51,8 +51,7 @@ function findNextTarget(currentTarget : Collider){
 	return nextTarget;
 }
 
-
-
 function OnTriggerEnter(other : Collider){
-	currentTarget = findNextTarget(other);	
+	if(other == (targetPointFirst) || other == (targetPointOther))
+		currentTarget = findNextTarget(other);	
 }
