@@ -3,7 +3,7 @@ var runTexture : Texture2D;
 var jumpTexture : Texture2D;
 var deathTexture : Texture2D;
 var idleTexture : Texture2D;
-var lookingRight = true;
+var lookingRight;
 var runTextureL : Texture2D;
 var jumpTextureL : Texture2D;
 var deathTextureL : Texture2D;
@@ -11,7 +11,12 @@ var idleTextureL : Texture2D;
 // current direction
 // Does this script currently respond to Input?
 var canControl = true;
-
+// fix for wrong texture facing direction
+function start()
+{
+		CharcterTextureDirectionSelect(1);
+		movement.direction = Vector3 (1, 0, 0);
+}
 // The character will spawn at spawnPoint's position when needed.  This could be changed via a script at runtime to implement, e.g. waypoints/savepoints.
 var spawnPoint : Transform;
 // in work code
