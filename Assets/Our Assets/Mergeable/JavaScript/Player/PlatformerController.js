@@ -11,12 +11,6 @@ var idleTextureL : Texture2D;
 // current direction
 // Does this script currently respond to Input?
 var canControl = true;
-// fix for wrong texture facing direction
-function start()
-{
-		CharcterTextureDirectionSelect(1);
-		movement.direction = Vector3 (1, 0, 0);
-}
 // The character will spawn at spawnPoint's position when needed.  This could be changed via a script at runtime to implement, e.g. waypoints/savepoints.
 var spawnPoint : Transform;
 // in work code
@@ -178,16 +172,17 @@ function UpdateSmoothedMovementDirection () {
 		h = 0.0;
 	
 	movement.isMoving = Mathf.Abs (h) > 0.1;
-		
 	if (movement.isMoving){
-		CharcterTextureDirectionSelect(h);
+		//CharcterTextureDirectionSelect(h);
+		runTextureApply();
 		movement.direction = Vector3 (h, 0, 0);
 	}
 	else{
-		if(lookingRight == true)
-			switchmainTexture(idleTexture);
-		else
-			switchmainTexture(idleTextureL);
+		idleTextureApply();
+		//~ if(lookingRight == true)
+			//~ switchmainTexture(idleTexture);
+		//~ else
+			//~ switchmainTexture(idleTextureL);
 	}
 	
 	// Grounded controls
@@ -216,34 +211,19 @@ function UpdateSmoothedMovementDirection () {
 	}
 }
 
-function CharcterTextureDirectionSelect(input : int){
-	if((input>0 && movement.direction.x == -1) || (input<0 && movement.direction.x == 1) ){// conditions for flip
-		if(lookingRight == true){
-			switchmainTexture(runTextureL);
-			lookingRight = false;
-		}
-		else{
-			switchmainTexture(runTexture);
-			lookingRight = true;
-		}
-	}
-}
-
 function FixedUpdate () {
 	// Make sure we are absolutely always in the 2D plane.
 	transform.position.z = 0;
 
 }
-function switchmainTexture(newTexture : Texture2D){
-	var newObj = gameObject.Find("Physical Component");
-	newObj.renderer.material.mainTexture = newTexture;
-}
+
 function ApplyJumping () {
 	// Prevent jumping too fast after each other
 	if (jump.lastTime + jump.repeatTime > Time.time)
 		return;
 
 	if (controller.isGrounded) {
+		
 		// Jump
 		// - Only when pressing the button down
 		// - With a timeout so you can press the button slightly before landing		
@@ -253,6 +233,7 @@ function ApplyJumping () {
 			SendMessage ("DidJump", SendMessageOptions.DontRequireReceiver);
 		}
 	}
+
 }
 // Stance change
 function ApplyStanceChange(){
@@ -425,14 +406,16 @@ function Update () {
 			if (jumpMoveDirection.sqrMagnitude > 0.01)
 				movement.direction = jumpMoveDirection.normalized;
 		}
-	}	
+	}
+	else{
+		jumpTextureApply();
+	}
 
 	// Update special effects like rocket pack particle effects
 	UpdateEffects ();
 }
 
-function OnControllerColliderHit (hit : ControllerColliderHit)
-{
+function OnControllerColliderHit (hit : ControllerColliderHit){
 	if (hit.moveDirection.y > 0.01) 
 		return;
 	
@@ -481,7 +464,48 @@ function Reset () {
 function SetControllable (controllable : boolean) {
 	canControl = controllable;
 }
- 
+ function jumpTextureApply(){
+ 		if(lookingRight == true)// means facing right
+			switchmainTexture(jumpTexture);
+		else// means facing left
+			switchmainTexture(jumpTextureL);
+ }
+ function runTextureApply(){
+	if(movement.direction.x == 1){// means facing left
+		switchmainTexture(runTextureL);
+		 lookingRight = false;
+	}
+	if(movement.direction.x == -1){// means facing right
+		switchmainTexture(runTexture);
+		 lookingRight = true;
+	}
+ }
+ function idleTextureApply(){
+ 		if(lookingRight == true)// means facing right
+			switchmainTexture(idleTexture);
+		else// means facing left
+			switchmainTexture(idleTextureL);
+ }
+ function deathTextureApply(){
+ }
+ // pass a texture and this method will renderer it to the player
+ function switchmainTexture(newTexture : Texture2D){
+	var newObj = gameObject.Find("Physical Component");
+	newObj.renderer.material.mainTexture = newTexture;
+}
+// which way is the playing looking?
+//~ function CharcterTextureDirectionSelect(input : int){
+	//~ if((input>0 && movement.direction.x == -1) || (input<0 && movement.direction.x == 1) ){// conditions for flip
+		//~ if(lookingRight == true){
+			//~ switchmainTexture(runTextureL);
+			//~ lookingRight = false;
+		//~ }
+		//~ else{
+			//~ switchmainTexture(runTexture);
+			//~ lookingRight = true;
+		//~ }
+	//~ }
+//~ }
 // Require a character controller to be attached to the same game object
 @script RequireComponent (CharacterController)
 @script AddComponentMenu ("2D Platformer/Platformer Controller")
