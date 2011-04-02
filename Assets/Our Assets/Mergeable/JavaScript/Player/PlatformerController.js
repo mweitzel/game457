@@ -1,12 +1,22 @@
 //This script, although modified, originated from the 2D Tutorial Unity provided.  In the tutorial, they encouraged others to use their assets and expand into their own game.
-
-
+var runTexture : Texture2D;
+var jumpTexture : Texture2D;
+var deathTexture : Texture2D;
+var idleTexture : Texture2D;
+var lookingRight = true;
+var runTextureL : Texture2D;
+var jumpTextureL : Texture2D;
+var deathTextureL : Texture2D;
+var idleTextureL : Texture2D;
+// current direction
 // Does this script currently respond to Input?
 var canControl = true;
 
 // The character will spawn at spawnPoint's position when needed.  This could be changed via a script at runtime to implement, e.g. waypoints/savepoints.
 var spawnPoint : Transform;
-
+// in work code
+	//var newObj = gameObject.Find("Physical Component");
+	//newObj.renderer.material.mainTexture = jumpTexture;
 class PlatformerControllerMovement {
 	// The speed when walking 
 	var walkSpeed = 3.0;
@@ -149,7 +159,7 @@ function Spawn () {
 	movement.speed = 0.0;
 	
 	// reset the character's position to the spawnPoint
-	transform.position = spawnPoint.position;
+	//transform.position = spawnPoint.position;
 	
 }
 
@@ -159,14 +169,21 @@ function OnDeath () {
 
 function UpdateSmoothedMovementDirection () {	
 	var h = Input.GetAxisRaw ("Horizontal");
-	
 	if (!canControl)
 		h = 0.0;
 	
 	movement.isMoving = Mathf.Abs (h) > 0.1;
 		
-	if (movement.isMoving)
+	if (movement.isMoving){
+		CharcterTextureDirectionSelect(h);
 		movement.direction = Vector3 (h, 0, 0);
+	}
+	else{
+		if(lookingRight == true)
+			switchmainTexture(idleTexture);
+		else
+			switchmainTexture(idleTextureL);
+	}
 	
 	// Grounded controls
 	if (controller.isGrounded) {
@@ -194,12 +211,28 @@ function UpdateSmoothedMovementDirection () {
 	}
 }
 
+function CharcterTextureDirectionSelect(input : int){
+	if((input>0 && movement.direction.x == -1) || (input<0 && movement.direction.x == 1) ){// conditions for flip
+		if(lookingRight == true){
+			switchmainTexture(runTextureL);
+			lookingRight = false;
+		}
+		else{
+			switchmainTexture(runTexture);
+			lookingRight = true;
+		}
+	}
+}
+
 function FixedUpdate () {
 	// Make sure we are absolutely always in the 2D plane.
 	transform.position.z = 0;
 
 }
-
+function switchmainTexture(newTexture : Texture2D){
+	var newObj = gameObject.Find("Physical Component");
+	newObj.renderer.material.mainTexture = newTexture;
+}
 function ApplyJumping () {
 	// Prevent jumping too fast after each other
 	if (jump.lastTime + jump.repeatTime > Time.time)
@@ -323,6 +356,7 @@ function Update () {
 
 	if (Input.GetButtonDown ("Jump") && canControl) {
 		jump.lastButtonTime = Time.time;
+		//renderer.material.mainTexture = jumpTexture;
 	}
 
 	UpdateSmoothedMovementDirection();
@@ -442,7 +476,7 @@ function Reset () {
 function SetControllable (controllable : boolean) {
 	canControl = controllable;
 }
-
+ 
 // Require a character controller to be attached to the same game object
 @script RequireComponent (CharacterController)
 @script AddComponentMenu ("2D Platformer/Platformer Controller")
