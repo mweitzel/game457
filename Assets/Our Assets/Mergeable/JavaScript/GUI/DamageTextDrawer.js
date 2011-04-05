@@ -7,6 +7,7 @@
 ///	damageText
 /// </summary>
 var damageText : GameObject;
+var healingText : GameObject;
 var showInvincible = false;
 
 function Start() {
@@ -20,13 +21,30 @@ function drawNewDamage(numberToDisplay : String, whereToPut : Vector3, howFast :
 	if(!showInvincible){
 		if(numberToDisplay == "Invincible")
 			return;
-	}	
+	}
+	
+	textToUse = null;
+	if(numberToDisplay[0] == '-'){
+		textToUse = healingText;
+		
+	}
+	else{
+		textToUse = damageText;
+		
+	}
 
-	damageTextClone = Instantiate (damageText, whereToPut, Quaternion.identity);
+	damageTextClone = Instantiate (textToUse, whereToPut, Quaternion.identity);
 	damageTextClone.gameObject.rigidbody.velocity = howFast;
 	damageTextClone.gameObject.rigidbody.velocity += varianceVector();
 	damageTextClone.gameObject.GetComponent("TextMesh").text = numberToDisplay;
+	
+	if(numberToDisplay[0] == '-'){
+	damageTextClone.gameObject.GetComponent("TextMesh").font.material.color = Color.green;
+	}
+	else{
 	damageTextClone.gameObject.GetComponent("TextMesh").font.material.color = Color.red;
+	}
+
 	damageTextClone.gameObject.GetComponent("TextMesh").font.material.color.a = .85;
 
 /*	
