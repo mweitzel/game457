@@ -1,4 +1,4 @@
-/// <summary>
+	/// <summary>
 /// DisplayText.js
 /// Feb 20, 2011
 /// Calvin Slusarski
