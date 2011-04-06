@@ -11,6 +11,7 @@
 
 	var characterStats : Stats;
 	var healthBarLength = 0;
+	var textureForBehindText : Texture;
 	
 	function Start() {
 		healthBarLength = Screen.width /4;
@@ -18,5 +19,10 @@
 		
 	function OnGUI() {
 		currentBarLength = healthBarLength * characterStats.health / characterStats.maxHealth;
-		GUI.Box(Rect(10, 10, currentBarLength, 20), characterStats.health + "/" + characterStats.maxHealth);
+//		GUI.Box(Rect(10, 10, currentBarLength, 20), characterStats.health + "/" + characterStats.maxHealth);
+		shape = Rect(10, 10, currentBarLength, 20);
+		content = GUIContent (characterStats.health + "/" + characterStats.maxHealth, textureForBehindText);
+		GUI.Box(shape, content);
+		
+//		GUIContent (text : string, image : Texture) :
 	}
