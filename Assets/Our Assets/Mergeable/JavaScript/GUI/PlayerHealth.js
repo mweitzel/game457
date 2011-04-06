@@ -17,5 +17,6 @@
 	}
 		
 	function OnGUI() {
-		 GUI.Box(Rect(10,10,healthBarLength, 20), characterStats.health + "/" + characterStats.maxHealth);
+		currentBarLength = healthBarLength * characterStats.health / characterStats.maxHealth;
+		GUI.Box(Rect(10, 10, currentBarLength, 20), characterStats.health + "/" + characterStats.maxHealth);
 	}
