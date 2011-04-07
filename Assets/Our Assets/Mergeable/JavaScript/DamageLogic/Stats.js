@@ -32,5 +32,8 @@ function DecreaseHealth(amount){
 	if(health > maxHealth)
 		health = maxHealth;
 }
+function Kill(){
+	health = 0;
+}
 
 
