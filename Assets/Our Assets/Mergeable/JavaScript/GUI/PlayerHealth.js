@@ -21,8 +21,9 @@
 		currentBarLength = healthBarLength * characterStats.health / characterStats.maxHealth;
 //		GUI.Box(Rect(10, 10, currentBarLength, 20), characterStats.health + "/" + characterStats.maxHealth);
 		shape = Rect(10, 10, currentBarLength, 20);
-		content = GUIContent (characterStats.health + "/" + characterStats.maxHealth, textureForBehindText);
+//		content = GUIContent (characterStats.health + "/" + characterStats.maxHealth, textureForBehindText);
+		content = GUIContent (textureForBehindText);
 		GUI.Box(shape, content);
-		
+		GUI.Box(Rect(10, 30, 60, 25), characterStats.eleType);
 //		GUIContent (text : string, image : Texture) :
 	}

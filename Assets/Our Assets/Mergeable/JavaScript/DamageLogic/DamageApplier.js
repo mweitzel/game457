@@ -44,13 +44,13 @@ function applyElementalRelations(attacker : Stats, defender : Stats, damageTotal
 function elementMultiplier(attackerType /*: int*/, defenderType/* : int*/){
 
 	if(attackerType == defenderType)
-		return 1;
+		return -0.5;
 	if((attackerType == "FIRE" && defenderType == "WATER")
 	|| (attackerType == "WATER" && defenderType == "EARTH")
 	|| (attackerType == "EARTH" && defenderType == "FIRE"))
-		return -0.5;
+		return 0.1;
 	else
-		return 2;
+		return 1;
 }
 
 function baseDamage(attacker : Stats, defender : Stats) {
