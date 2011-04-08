@@ -20,10 +20,23 @@ function Update() {
 
 function dealWithIt(elementType){
 	turnAllOff();
+	if(elementType == "FIRE")
+		 ChangeToFire();
+	if(elementType == "WATER")
+		 ChangeToWater();
+	if(elementType == "EARTH")
+		 ChangeToEarth();
 }
 
+function ChangeToFire() {
+	currentEffect = Instantiate(fire);
+}
+function ChangeToWater() {
+	currentEffect = Instantiate(water);
+}
+function ChangeToEarth() {
+	currentEffect = Instantiate(earth);
+}
 function turnAllOff() {
-/*	fire.emit = false;
-	water.emit = false;
-	earth.emit = false;	*/
+	Destroy (currentEffect);
 }
