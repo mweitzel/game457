@@ -1,6 +1,11 @@
 var fire : GameObject;
+var fireBurst : GameObject;
 var water : GameObject;
+var waterBurst : GameObject;
 var earth : GameObject;
+var earthBurst : GameObject;
+
+var heightAdjust = -2.5;
 
 var currentType;
 var currentEffect;
@@ -15,7 +20,8 @@ function Update() {
 		currentType = realCurrentType;
 		dealWithIt(currentType);
 	}
-	currentEffect.transform.position = gameObject.transform.position;
+	currentEffect.transform.position = this.gameObject.transform.position;
+	currentEffect.transform.position.y += heightAdjust;
 }
 
 function dealWithIt(elementType){
@@ -29,12 +35,24 @@ function dealWithIt(elementType){
 }
 
 function ChangeToFire() {
+	burst = Instantiate(fireBurst);
+	burst.transform.position = gameObject.transform.position;
+	burst.transform.position.y += heightAdjust;
+	Destroy(burst, 1);
 	currentEffect = Instantiate(fire);
 }
 function ChangeToWater() {
+	burst = Instantiate(waterBurst);
+	burst.transform.position = gameObject.transform.position;
+	burst.transform.position.y += heightAdjust;
+	Destroy(burst, 1);
 	currentEffect = Instantiate(water);
 }
 function ChangeToEarth() {
+	burst = Instantiate(earthBurst);
+	burst.transform.position = gameObject.transform.position;
+	burst.transform.position.y += heightAdjust;
+	Destroy(burst, 1);
 	currentEffect = Instantiate(earth);
 }
 function turnAllOff() {
