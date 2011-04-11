@@ -22,6 +22,27 @@ function shoot(){
 	
 	Destroy(clone, 1.2);
 }
+function shoot(setDestoryRange : int){	
+
+	var clone : GameObject;
+	var shootDirection = GetComponent(GetVectorFromTarget).getVector();
+	clone = Instantiate(projectile, transform.position, transform.rotation);
+	clone.rigidbody.velocity = GetComponent(CharacterController).velocity + 5*shootDirection;
+	Physics.IgnoreCollision(collider, clone.collider);
+	
+	Destroy(clone, setDestoryRange);
+}
+function shoot(setDestoryRange : int, setTargetDirection : int){	
+
+	var clone : GameObject;
+	//var shootDirection = GetComponent(GetVectorFromTarget).getVector();
+	var shootDirection = setTargetDirection;
+	clone = Instantiate(projectile, transform.position, transform.rotation);
+	clone.rigidbody.velocity = GetComponent(CharacterController).velocity + 5*shootDirection;
+	Physics.IgnoreCollision(collider, clone.collider);
+	
+	Destroy(clone, setDestoryRange);
+}
 //
 //function updateProjetile() {
 //	for (var aProjectile in projectiles)

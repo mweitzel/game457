@@ -37,16 +37,16 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
 	<Reference Include="Boo.Lang">
-	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/Boo.Lang.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Mono/lib/mono/unity/Boo.Lang.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityScript">
-	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/UnityScript.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Mono/lib/mono/unity/UnityScript.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +56,7 @@
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Chase And Shoot.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\GetVectorFromTarget.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Patrol.js" />
+     <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Stationary and shoot.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\DamageLogic\Attack.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\DamageLogic\DamageApplier.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\DamageLogic\Stats.js" />
