@@ -38,7 +38,7 @@ function findDirectionFromMeTo(targetDirection : Collider){
 }
 
 function OnCollisionEnter(collision : Collision){
-	print("happened");
+//	print("happened");
 	if(collision.collider == currentTarget)
 		directionToGo = findDirectionFromMeTo(findNextTarget(currentTarget));
 }
@@ -53,7 +53,7 @@ function findNextTarget(currentTarget : Collider){
 }
 
 function OnTriggerEnter(other : Collider){
-	print("happened");
+//	print("happened");
 	if(other == (targetPointFirst) || other == (targetPointOther))
 		currentTarget = findNextTarget(other);	
 }
