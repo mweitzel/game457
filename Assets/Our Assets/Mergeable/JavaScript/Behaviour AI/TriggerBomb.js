@@ -1,7 +1,7 @@
 var explosionStrength = 10;
 var delayTime = 1;
 var bomb : Stats[];
-
+var oneTimeUse = false;
 
 function Update () {
 	
@@ -16,4 +16,6 @@ function respond() {
 	clone = Instantiate(bomb[whichType], positionToMake, Quaternion.identity);
 	clone.GetComponent(Stats).attack = explosionStrength;
 	Destroy(clone, 2);	
+	if(oneTimeUse)
+		Destroy(gameObject);
 }

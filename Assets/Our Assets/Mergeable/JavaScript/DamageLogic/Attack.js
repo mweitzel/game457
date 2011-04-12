@@ -18,10 +18,8 @@ function OnCollisionStay(collision : Collision) {
 
 	attacker = this.gameObject.GetComponent("Stats");
 	defender = collision.collider.gameObject;
-	print("hello");
 	if(isAnObjectWithStats(defender))
 		attackLogic.applyAttack(attacker, isAnObjectWithStats(defender));
-	print("hello");
 	if(destroySelfOnHit)
 		Destroy(this.gameObject);
 	

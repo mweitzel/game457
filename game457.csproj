@@ -51,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Animation\Animate texture.js" />
+     <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Boss\AIShooterRandomDirection.js" />
+     <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Boss\ShootWhenShotAt.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Boss\rotate randomly.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\AIShooter.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\AutoWayPoint.js" />
@@ -72,6 +74,7 @@
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Player\ControllerColliderCanTakeDamage.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Player\DeathScript.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Player\DirectionToShoot.js" />
+     <None Include="Assets\Our Assets\Mergeable\JavaScript\Player\LoadNewLevel.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Player\Monitor Type and Choose Emitter To Display.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Player\PlatformerController.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Player\Shooter.js" />

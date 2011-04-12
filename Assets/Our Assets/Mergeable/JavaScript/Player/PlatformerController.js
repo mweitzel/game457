@@ -509,11 +509,15 @@ function SetControllable (controllable : boolean) {
 
 
 function OnTriggerEnter(other : Collider) {
-		print("hello");
-
+	var superTrigger;
 	superTrigger = other.gameObject.GetComponent(TriggerBomb);
-	if(superTrigger);
+	if(superTrigger)
 		superTrigger.respond();
+	
+	superTrigger = other.gameObject.GetComponent(LoadNewLevel);
+	if(superTrigger)
+		superTrigger.respond();
+
 }
 // Require a character controller to be attached to the same game object
 @script RequireComponent (CharacterController)
