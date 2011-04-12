@@ -506,6 +506,15 @@ function SetControllable (controllable : boolean) {
 		//~ }
 	//~ }
 //~ }
+
+
+function OnTriggerEnter(other : Collider) {
+		print("hello");
+
+	superTrigger = other.gameObject.GetComponent(TriggerBomb);
+	if(superTrigger);
+		superTrigger.respond();
+}
 // Require a character controller to be attached to the same game object
 @script RequireComponent (CharacterController)
 @script AddComponentMenu ("2D Platformer/Platformer Controller")

@@ -14,7 +14,7 @@ var destroySelfOnHit = true;
 function Update () {
 }
 
-function OnCollisionEnter(collision : Collision) {
+function OnCollisionStay(collision : Collision) {
 
 	attacker = this.gameObject.GetComponent("Stats");
 	defender = collision.collider.gameObject;
