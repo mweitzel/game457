@@ -52,6 +52,7 @@
   <ItemGroup>
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Animation\Animate texture.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Boss\AIShooterRandomDirection.js" />
+     <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Boss\Load Credits.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Boss\ShootWhenShotAt.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Boss\rotate randomly.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\AIShooter.js" />
