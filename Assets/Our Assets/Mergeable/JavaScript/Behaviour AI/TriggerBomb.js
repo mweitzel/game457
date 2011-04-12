@@ -1,5 +1,5 @@
 var explosionStrength = 10;
-var delayTime = 1;
+var delayTime = 1.0;
 var bomb : Stats[];
 var oneTimeUse = false;
 
