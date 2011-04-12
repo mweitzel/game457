@@ -13,6 +13,9 @@ function OnControllerColliderHit (hit : ControllerColliderHit)
 	checkForDamageToYou(hit);
 }
 
+function OnTriggerStay(other : Collider){
+	checkForDamageToYou(other);
+}
 function checkForDamageToYou(otherObject){
 // suggested renaming them to world or enemy ?
 //currentCollisionEntity object hit playing.

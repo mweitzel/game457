@@ -58,6 +58,7 @@
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\GetVectorFromTarget.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Patrol.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\Stationary and shoot.js" />
+     <None Include="Assets\Our Assets\Mergeable\JavaScript\Behaviour AI\TriggerBomb.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\DamageLogic\Attack.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\DamageLogic\DamageApplier.js" />
      <None Include="Assets\Our Assets\Mergeable\JavaScript\DamageLogic\Stats.js" />

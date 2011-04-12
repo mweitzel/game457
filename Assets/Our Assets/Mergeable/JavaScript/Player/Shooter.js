@@ -2,8 +2,10 @@
 var projectiles : GameObject[];
 var projectile;
 
+var originalProjectile = 0;
+
 function Start(){
-	projectile = projectiles[0];	
+	projectile = projectiles[originalProjectile];	
 }
 
 function Update () {
